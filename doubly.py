@@ -80,8 +80,21 @@ class DoublyLinkedList:
             temp = temp.prev
         print("None")
 
+    def print_reverse_recursive(self, node=None, is_start=True):
+        if is_start:
+            node = self.head
+        if node is None:
+            if is_start:
+                print("None")
+            return
+        
+        self.print_reverse_recursive(node.next, is_start=False)
+        print(node.data, end=" <-> ")
+        if is_start:
+            print("None")
 
 
+# Execution
 dll = DoublyLinkedList()
 dll.insert(10, 0)
 dll.insert(20, 1)
@@ -92,5 +105,8 @@ dll.delete(20)
 print("Forward:")
 dll.display_forward()
 
-print("Backward:")
+print("\nBackward (Iterative):")
 dll.display_backward()
+
+print("\nBackward (Recursive):")
+dll.print_reverse_recursive()
