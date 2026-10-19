@@ -93,20 +93,31 @@ class DoublyLinkedList:
         if is_start:
             print("None")
 
+    def search_and_count(self, value):
+        temp = self.head
+        count = 0
+        
+        while temp is not None:
+            if temp.data == value:
+                count += 1
+            temp = temp.next
+            
+        return count
+
 
 # Execution
 dll = DoublyLinkedList()
 dll.insert(10, 0)
 dll.insert(20, 1)
 dll.insert(30, 2)
+dll.insert(10, 3) # Inserting duplicate '10' for testing
 dll.insert(15, 1)
 dll.delete(20)
 
-print("Forward:")
+print("Current List:")
 dll.display_forward()
 
-print("\nBackward (Iterative):")
-dll.display_backward()
-
-print("\nBackward (Recursive):")
-dll.print_reverse_recursive()
+# Testing search and count
+search_val = 10
+result = dll.search_and_count(search_val)
+print(f"\nThe number {search_val} appears {result} time(s) in the list.")
